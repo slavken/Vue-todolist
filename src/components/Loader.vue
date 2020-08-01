@@ -1,34 +1,13 @@
 <template>
-    <div class="lds-dual-ring"></div>
+    <div class="spinner-border text-primary" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
 </template>
 
 <style scoped>
-/* Licensed under MIT (https://github.com/loadingio/loading.css/blob/master/LICENSE) */
-
-.lds-dual-ring {
-    display: inline-block;
-    width: 80px;
-    height: 80px;
-}
-
-.lds-dual-ring:after {
-    content: " ";
-    display: block;
-    width: 64px;
-    height: 64px;
-    margin: 8px;
-    border-radius: 50%;
-    border: 6px solid #cef;
-    border-color: #cef transparent #cef transparent;
-    animation: lds-dual-ring 1.2s linear infinite;
-}
-
-@keyframes lds-dual-ring {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
+.spinner-border {
+    width: 2rem;
+    height: 2rem;
+    opacity: 0.5;
 }
 </style>
