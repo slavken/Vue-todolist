@@ -10,7 +10,7 @@
             <option value="not-completed">Not completed</option>
           </select>
       </div>
-      <button @click="CLEAR_ALL(filter)" class="btn btn-sm btn-light border float-right">Clear all</button>
+      <button @click="clearAll(filter)" class="btn btn-sm btn-light border float-right">Clear all</button>
     </div>
     <hr>
     <Loader v-if="loading" />
@@ -48,20 +48,20 @@ export default {
     fetch('https://jsonplaceholder.typicode.com/todos?_limit=10')
       .then(res => res.json())
       .then(res => {
-        this.FETCH_TODOS(res)
+        this.fetchTodos(res)
         this.loading = false
       });
   },
-  methods: mapActions(['FETCH_TODOS', 'CLEAR_ALL']),
+  methods: mapActions(['fetchTodos', 'clearAll']),
   computed: {
-    ...mapGetters(['TODOS', 'COMPLETED_TODOS', 'NOT_COMPLETED_TODOS']),
+    ...mapGetters(['todos', 'completedTodos', 'notCompletedTodos']),
     filteredTodos() {
       if (this.filter === 'completed')
-        return this.COMPLETED_TODOS
+        return this.completedTodos
       else if (this.filter === 'not-completed')
-        return this.NOT_COMPLETED_TODOS
+        return this.notCompletedTodos
       else
-        return this.TODOS
+        return this.todos
     }
   }
 }

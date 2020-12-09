@@ -17,8 +17,8 @@ export default new Vuex.Store({
     DELETE_NOT_COMPLETED_TODOS: (state) => state.todos = state.todos.filter(todo => todo.completed)
   },
   actions: {
-    FETCH_TODOS: ({commit}, payload) => commit('INIT_TODOS', payload),
-    CLEAR_ALL: ({commit}, payload) => {
+    fetchTodos: ({commit}, payload) => commit('INIT_TODOS', payload),
+    clearAll: ({commit}, payload) => {
       if (payload === 'all')
         commit('DELETE_TODOS')
       else if (payload === 'completed')
@@ -28,8 +28,8 @@ export default new Vuex.Store({
     }
   },
   getters: {
-    TODOS: (state) => state.todos.filter(todo => todo.title).sort((a, b) => a.completed - b.completed),
-    COMPLETED_TODOS: (state, getters) => getters.TODOS.filter(todo => todo.completed),
-    NOT_COMPLETED_TODOS: (state, getters) => getters.TODOS.filter(todo => !todo.completed)
+    todos: (state) => state.todos.filter(todo => todo.title).sort((a, b) => a.completed - b.completed),
+    completedTodos: (state, getters) => getters.todos.filter(todo => todo.completed),
+    notCompletedTodos: (state, getters) => getters.todos.filter(todo => !todo.completed)
   }
 })
